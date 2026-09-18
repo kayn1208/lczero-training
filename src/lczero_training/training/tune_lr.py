@@ -75,7 +75,7 @@ def _make_eval_step(
         def calculate_loss(
             model_arg: LczeroModel, sample_arg: TrainingSample
         ) -> Tuple[jax.Array, Dict[str, jax.Array]]:
-            return loss_fn(model_arg, **sample_arg)
+            return loss_fn(model_arg, sample_arg)
 
         loss_vfn = jax.vmap(calculate_loss, in_axes=(None, 0), out_axes=0)
         per_sample_data_loss, _ = loss_vfn(model, sample)
