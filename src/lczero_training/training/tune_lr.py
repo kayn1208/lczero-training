@@ -199,7 +199,7 @@ def tune_lr(
         label: str,
         on_result: Callable[[float, float, float | None], None],
     ) -> None:
-        start_step = training_state.jit_state.step
+        start_step = int(training_state.jit_state.step)
 
         def offset_schedule(count: jax.Array) -> jax.Array:
             return schedule(count - start_step)
