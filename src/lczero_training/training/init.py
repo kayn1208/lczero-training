@@ -124,7 +124,7 @@ def init(
             config.model.defaults.compute_dtype,
             ignore_config_mismatch,
         )
-        step = override_training_steps or lc0_steps
+        step = override_training_steps if override_training_steps is not None else lc0_steps
         new_swa_state = (
             training_state.jit_state.swa_state
             if no_copy_swa
